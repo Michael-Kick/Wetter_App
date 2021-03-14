@@ -4,9 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+class Button extends React.Component{
+  render(){
+    return(<button >
+      Help me please!
+    </button>);
+  }
+}
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Button/>
   </React.StrictMode>,
   document.getElementById('root')
 );
