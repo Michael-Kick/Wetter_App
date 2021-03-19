@@ -1,14 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { usePromiseTracker } from 'react-promise-tracker';
+import Loader from 'react-loader-spinner';
+
+const LoadingIndicator = (props) => {
+	const { promiseInProgress } = usePromiseTracker();
+
+	return (
+		promiseInProgress && (
+			<div
+				style={{
+					width: '100%',
+					height: '100',
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}>
+				<Loader type='ThreeDots' color='#2BAD60' height='100' width='100' />
+			</div>
+		)
+	);
+};
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App/>
-  </React.StrictMode>,
-  document.getElementById('root')
+	<div>
+		<App />
+		<LoadingIndicator />
+	</div>,
+	document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
